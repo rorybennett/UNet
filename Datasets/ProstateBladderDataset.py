@@ -105,17 +105,18 @@ class ProstateBladderDataset(Dataset):
         # Create correct tv_tensor classes (ensures correct transforms are applied)
         image = Image(image)
         label = Mask(label)
+
+        # Apply optional transforms.
+        if self.transforms:
+            # Only apply optional transforms on oversampled images.
+            if idx % self.oversampling_factor != 0:
+                image, label = self.transforms(image, label)
         # Apply required transforms.
         required_transforms = v2.Compose([
             v2.Resize(self.image_size),
             v2.Normalize([self.train_mean], [self.train_std])
         ])
         image, label = required_transforms(image, label)
-        # Apply optional transforms.
-        if self.transforms:
-            # Only apply optional transforms on oversampled images.
-            if idx % self.oversampling_factor != 0:
-                image, label = self.transforms(image, label)
 
         if self.verbose:
             # Show post-transform image and label.

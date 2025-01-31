@@ -18,14 +18,14 @@ from EarlyStopping.EarlyStopping import EarlyStopping
 from UNetModels.UNet import UNet
 from Utils import Utils
 
-dataset_dir = 'UNet Datasets/Initial 19'
+dataset_dir = 'C:/Users/roryb/Documents/Coding/Python/Datasets/UNet/Initial 19'
 torch.manual_seed(0)
 
 ########################################################################################################################
 # Initialise parameters.
 ########################################################################################################################
 num_epochs = 100
-dataset = 'Dataset011_sAUSprostate'
+dataset = 'Dataset019_cAUSprostate'
 image_size = 512
 images_dir = f'{dataset_dir}/{dataset}/imagesTr'
 labels_dir = f'{dataset_dir}/{dataset}/labelsTr'
@@ -38,7 +38,7 @@ def main():
     ####################################################################################################################
     # Loop through fold structures.
     ####################################################################################################################
-    for key, vals in reversed(fold_structure.items()):
+    for key, vals in fold_structure.items():
         print('====================================================================================================='
               f'{key} Training starting...')
 
