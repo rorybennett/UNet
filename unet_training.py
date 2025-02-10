@@ -62,7 +62,8 @@ def main():
     ################################################################################################################
     # Transformers (a temporary dataset is used to calculate the training mean and std for normalising).
     ################################################################################################################
-    mean, std = PBD(images_dir, labels_dir, vals['train'], image_size=(0, 0), train_mean=0,
+    mean, std = PBD(f'{dataset_dir}/{images_dir}', f'{dataset_dir}/{labels_dir}', vals['train'], image_size=(0, 0),
+                    train_mean=0,
                     train_std=0).get_mean_and_std()
     # These transforms are only applied to the oversampled images.
     transforms_train = v2.Compose([
@@ -95,8 +96,8 @@ def main():
     #
     # exit()
 
-    val_dataset = PBD(images_dir, labels_dir, vals['val'], image_size=(image_size, image_size), train_mean=mean,
-                      train_std=std)
+    val_dataset = PBD(f'{dataset_dir}/{images_dir}', f'{dataset_dir}/{labels_dir}', vals['val'],
+                      image_size=(image_size, image_size), train_mean=mean, train_std=std)
     val_dataloader = DataLoader(val_dataset, batch_size=batch_size, shuffle=False)
     ################################################################################################################
     # Model, optimiser, learning rate schedular.
