@@ -75,7 +75,7 @@ def main():
         v2.GaussianBlur(3)
     ])
     # Save training parameter values.
-    with open(join(dataset_dir, 'training_parameters.txt'), 'w') as file:
+    with open(join(save_dir, 'training_parameters.txt'), 'w') as file:
         file.write('Training Parameters\n'
                    '============================================================\n'
                    f'Dataset Path: {dataset_dir}\n'
