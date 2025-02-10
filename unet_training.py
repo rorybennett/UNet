@@ -86,9 +86,9 @@ def main():
     ################################################################################################################
     # Datasets and dataloaders.
     ################################################################################################################
-    train_dataset = PBD(images_dir, labels_dir, vals['train'], oversampling_factor=oversampling_factor,
-                        transforms=transforms_train, image_size=(image_size, image_size), train_mean=mean,
-                        train_std=std)
+    train_dataset = PBD(f'{dataset_dir}/{images_dir}', f'{dataset_dir}/{labels_dir}', vals['train'],
+                        oversampling_factor=oversampling_factor, transforms=transforms_train,
+                        image_size=(image_size, image_size), train_mean=mean, train_std=std)
     train_dataloader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
 
     # for i in range(len(train_dataset)):
