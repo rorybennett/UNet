@@ -53,7 +53,7 @@ key, vals = fold, fold_structure[f'fold_{fold}']
 
 def main():
     print('====================================================================================================='
-          f'{key} Training starting...')
+          f'\n{key} Training starting...')
 
     start_time = datetime.now()
     save_dir = f'{save_path}/{key}'
@@ -75,7 +75,7 @@ def main():
         v2.GaussianBlur(3)
     ])
     # Save training parameter values.
-    with open(join(dataset_dir), 'training_parameters.txt') as file:
+    with open(join(dataset_dir, 'training_parameters.txt'), 'w') as file:
         file.write('Training Parameters\n'
                    '============================================================\n'
                    f'Dataset Path: {dataset_dir}\n'
