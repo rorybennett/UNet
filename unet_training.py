@@ -81,7 +81,13 @@ def main():
                    f'Dataset Path: {dataset_dir}\n'
                    f'Images Path: {images_dir}\n'
                    f'Labels Path: {labels_dir}\n'
-                   f'Save Path: {save_dir}')
+                   f'Save Path: {save_dir}\n'
+                   f'Batch Size: {batch_size}\n'
+                   f'Oversampling Factor: {oversampling_factor}\n'
+                   f'Number of Epochs: {num_epochs}\n'
+                   f'Image size: {image_size}\n'
+                   f'Patience: {patience}\n'
+                   f'Fold: {fold}')
 
     ################################################################################################################
     # Datasets and dataloaders.
