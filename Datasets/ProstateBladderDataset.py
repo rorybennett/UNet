@@ -94,8 +94,8 @@ class ProstateBladderDataset(Dataset):
         image = cv2.imread(image_path, cv2.IMREAD_GRAYSCALE) / 255
         label = cv2.imread(label_path, cv2.IMREAD_GRAYSCALE)
 
-        fig, ax = plt.subplots(2, 2)
         if self.verbose:
+            fig, ax = plt.subplots(2, 2)
             # Show pre-transform image and label.
             ax[0, 0].imshow(image, cmap='gray')
             ax[0, 1].imshow(label, cmap='gray')
