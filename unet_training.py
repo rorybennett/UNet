@@ -170,9 +170,9 @@ def main():
               f"Train Loss: {train_losses[-1]:.4f}, "
               f"Val Loss: {val_losses[-1]:.4f}, ", end='')
 
-        early_stopping(epoch_val_loss, model, epoch, optimiser, save_path)
+        early_stopping(epoch_val_loss, model, epoch, optimiser, save_dir)
 
-        Utils.plot_losses(early_stopping.best_epoch + 1, train_losses, val_losses, lr, save_path)
+        Utils.plot_losses(early_stopping.best_epoch + 1, train_losses, val_losses, lr, save_dir)
 
         if early_stopping.early_stop:
             print('Patience reached, stopping early.')
@@ -184,7 +184,7 @@ def main():
     # Once training complete, plot validation images.
     ################################################################################################################
     val_model = UNet().cuda()
-    val_model.load_state_dict(torch.load(join(save_path, 'model_latest.pth'))['model_state_dict'])
+    val_model.load_state_dict(torch.load(join(save_dir, 'model_latest.pth'))['model_state_dict'])
     val_model.eval()
     with torch.no_grad():
         counter = 0
@@ -210,7 +210,7 @@ def main():
                 ax[1].imshow(o, cmap='gray')
                 ax[2].set_title('Ground truth')
                 ax[2].imshow(labels[i].transpose(1, 2, 0), cmap='gray')
-                plt.savefig(join(save_path, f'val_result_{counter}.png'))
+                plt.savefig(join(save_dir, f'val_result_{counter}.png'))
                 plt.close()
                 counter += 1
     end_time = datetime.now()
