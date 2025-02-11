@@ -53,7 +53,7 @@ key, vals = fold, fold_structure[f'fold_{fold}']
 
 def main():
     print('====================================================================================================='
-          f'\n{key} Training starting...')
+          f'\nFold {key} Training starting...')
 
     start_time = datetime.now()
     save_dir = f'{save_path}/{key}'
@@ -167,8 +167,8 @@ def main():
         time_now = datetime.now().strftime('%Y-%m-%d  %H:%M:%S')
         print(f"{time_now} -- "
               f"Epoch {epoch + 1}/{num_epochs}, "
-              f"Train Loss: {train_losses[-1]:.8f}, "
-              f"Val Loss: {val_losses[-1]:.8f}, ", end='')
+              f"Train Loss: {train_losses[-1]:.4f}, "
+              f"Val Loss: {val_losses[-1]:.4f}, ", end='')
 
         early_stopping(epoch_val_loss, model, epoch, optimiser, save_path)
 
