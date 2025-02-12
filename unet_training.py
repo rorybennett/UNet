@@ -168,7 +168,7 @@ def main():
         print(f"{time_now} -- "
               f"Epoch {epoch + 1}/{num_epochs}, "
               f"Train Loss: {train_losses[-1]:.4f}, "
-              f"Val Loss: {val_losses[-1]:.4f}, ", end='')
+              f"Val Loss: {val_losses[-1]:.4f}, ", end='', flush=True)
 
         early_stopping(epoch_val_loss, model, epoch, optimiser, save_dir)
 
