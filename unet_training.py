@@ -214,7 +214,7 @@ def main():
                 plt.close()
                 counter += 1
     end_time = datetime.now()
-    run_time = start_time - end_time
+    run_time = end_time - start_time
     print(f'{key} Training completed.\n'
           f'Best Epoch: {early_stopping.best_epoch + 1}.\n'
           f"End time: {end_time.strftime('%Y-%m-%d  %H:%M:%S')}.\n"
