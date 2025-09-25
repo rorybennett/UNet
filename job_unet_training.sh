@@ -36,11 +36,7 @@ training_images_path=${inputs[$((1))]}
 training_labels_path=${inputs[$((2))]}
 save_path=${inputs[$((3))]}
 # Check if SGE_TASK_ID is 6 and set fold to "all"
-if [ "$SGE_TASK_ID" -eq 6 ]; then
-    fold="all"
-else
-    fold=${folds[$((SGE_TASK_ID-1))]}
-fi
+fold=${folds[$((SGE_TASK_ID - 1))]}
 
 python unet_training.py \
   -dp="$dataset_path" \
